@@ -136,7 +136,8 @@ function critical_section($is=true)
  */
 function write_pid($pidfilename,$pid)
 	{
-	$h = fopen($pidfilename,'w+');
+	$mode_create_or_truncate = 'w+';
+	$h = fopen($pidfilename,$mode_create_or_truncate);
 	if($h==false)
 		{
 		logmsg(FATAL,"can't open file $pidfilename for writing",__FILE__,__LINE__);

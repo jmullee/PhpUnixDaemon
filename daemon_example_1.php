@@ -27,7 +27,7 @@ require_once('daemon.php');
 
 function run()
 	{
-	$h = fopen('/tmp/daemon_example_1.log','w+');
+	$h = fopen('/tmp/daemon_example_1.log','a');
 	if($h != null)
 		{
 		while(true)

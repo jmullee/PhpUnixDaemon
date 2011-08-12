@@ -34,11 +34,14 @@ function logmsg($level, $msg, $file='', $line=0)
 	$level_names = array(FATAL=>'FATAL', ERROR=>'ERROR',WARN=>'WARN',DEBUG=>'DEBUG');
 
 	// prepend level, filename and line-number to message
-	$lmsg = $level_names[$level].':('.$file.':'.$line.'):'.$msg."\n";
+	$lmsg = posix_getpid().':'.$level_names[$level].':('.$file.':'.$line.'):'.$msg."\n";
 
 	// open log file
 	if($logfilehandle==null)
-		$logfilehandle=fopen($logfile,'w+');
+		{
+		$mode_append = 'a';
+		$logfilehandle=fopen($logfile,$mode_append);
+		}
 
 	// exit if logfile still not open
 	if($logfilehandle==null)
